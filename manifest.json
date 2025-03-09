@@ -17,12 +17,8 @@
       "default_popup": "popup/popup.html",
       "default_icon": "icons/icon.png"
     },
-    "declarative_net_request": {
-      "rule_resources": [{
-        "id": "ruleset_1",
-        "enabled": true,
-        "path": "rules.json"
-      }]
+    "background": {
+      "service_worker": "background.js"
     },
     "content_scripts": [
       {
