@@ -1,19 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const listElement = document.getElementById('history-list');
-    
-    chrome.storage.local.get('history', function (result) {
-      const history = result.history || [];
-      
-      history.slice(-20).reverse().forEach(item => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-          <strong>Type:</strong> ${item.type}<br/>
-          <strong>Title:</strong> ${item.title}<br/>
-          <strong>URL:</strong> <a href="${item.url}" target="_blank">${item.url}</a><br/>
-          <strong>Time:</strong> ${new Date(item.time).toLocaleString()}<br/><hr/>
-        `;
-        listElement.appendChild(li);
-      });
-    });
-  });
-  
+    const parentalLoginButton = document.getElementById('parental_login');
+
+    if (parentalLoginButton) {
+        console.log("Button found! Adding event listener...");
+        parentalLoginButton.addEventListener('click', function () {
+            console.log("Button clicked! Opening new tab...");
+            chrome.tabs.create({ url: 'http://localhost:3000' });
+        });
+    } else {
+        console.error("Button with ID 'parental_login' not found.");
+    }
+});
+
